@@ -40,7 +40,7 @@ export default class FetchProvider extends BaseConnection implements Provider {
       });
       return await response.json();
     } catch (error) {
-      if (error instanceof FetchError) {
+      if (error.name === 'FetchError') {
         throw new ResolutionError(ResolutionErrorCode.NamingServiceDown, {
           method: this.name,
         });
